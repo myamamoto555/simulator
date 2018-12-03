@@ -101,11 +101,13 @@ class User(Agent):
         usr_constrains = {s.name: temp_constrains[i] for i, s in enumerate(self.domain.usr_slots)}
 
         # sample the number of attribute about the system
-        num_interest = np.random.randint(0, len(self.domain.sys_slots)-1)
+        num_interest = 0
+        # num_interest = np.random.randint(0, len(self.domain.sys_slots)-1)
         goal_candidates = [s.name for s in self.domain.sys_slots if s.name != BaseSysSlot.DEFAULT]
-        selected_goals = np.random.choice(goal_candidates, size=num_interest, replace=False)
-        np.random.shuffle(selected_goals)
-        sys_goals = [BaseSysSlot.DEFAULT] + selected_goals.tolist()
+        # selected_goals = np.random.choice(goal_candidates, size=num_interest, replace=False)
+        # np.random.shuffle(selected_goals)
+        # sys_goals = [BaseSysSlot.DEFAULT] + selected_goals.tolist()
+        sys_goals = [BaseSysSlot.DEFAULT]
         return usr_constrains, sys_goals
 
     def _constrain_equal(self, top_action):

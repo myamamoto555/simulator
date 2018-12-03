@@ -32,10 +32,10 @@ class AbstractNlg(object):
 
 
 class SysCommonNlg(object):
-    templates = {SystemAct.GREET: ["Hello.", "Hi.", "Greetings.", "How are you doing?"],
+    templates = {SystemAct.GREET: ["どんな物件をお探しですか。", "お探しの物件の詳細を教えて下さい。"],
                  SystemAct.ASK_REPEAT: ["Can you please repeat that?", "What did you say?"],
                  SystemAct.ASK_REPHRASE: ["Can you please rephrase that?", "Can you say it in another way?"],
-                 SystemAct.GOODBYE: ["Goodbye.", "See you next time."],
+                 SystemAct.GOODBYE: ["分かりました。条件に合う物件を検索します。"],
                  SystemAct.CLARIFY: ["I didn't catch you."],
                  SystemAct.REQUEST+core.BaseUsrSlot.NEED: ["What can I do for you?",
                                                            "What do you need?",
@@ -164,6 +164,7 @@ class UserNlg(AbstractNlg):
         :return: uttearnces in string
         """
         str_actions = []
+        # initial actions: [{'parameters': [], 'act': 'greet'}, {'parameters': [('#default', None)], 'act': 'request'}]
         for a in actions:
             if a.act == UserAct.KB_RETURN:
                 sys_goals = a.parameters[1]
