@@ -35,10 +35,11 @@ class Slot(object):
     """
     Class for sys/usr slot
     """
-    def __init__(self, name, description, vocabulary):
+    def __init__(self, name, description, vocabulary, ans):
         self.name = name
         self.description = description
         self.vocabulary = vocabulary
+        self.ans = ans
         self.dim = len(vocabulary)
         self.requests = []
         self.informs = []
@@ -89,9 +90,9 @@ class Domain(object):
         """
         self.name = domain_spec.name
         self.greet = domain_spec.greet
-        self.usr_slots = [Slot("#"+name, desc, vocab) for name, desc, vocab in domain_spec.usr_slots]
+        self.usr_slots = [Slot("#"+name, desc, vocab, ans) for name, desc, vocab, ans in domain_spec.usr_slots]
         self.sys_slots = [Slot("#"+name, desc, vocab) for name, desc, vocab in domain_spec.sys_slots]
-        self.sys_slots.insert(0, Slot(BaseSysSlot.DEFAULT, "", [str(i) for i in range(domain_spec.db_size)]))
+        self.sys_slots.insert(0, Slot(BaseSysSlot.DEFAULT, "", [str(i) for i in range(domain_spec.db_size)], ""))
 
         for slot_name, slot_nlg in domain_spec.nlg_spec.items():
             slot_name = "#"+slot_name

@@ -20,10 +20,14 @@ class EstateSpec(DomainSpec):
                                         "賃貸を探しています。"]}
                 }
 
-    usr_slots = [("loc", "location city", ["新宿", "大崎", "品川"]),
-                 ("price", "price range", ["5万円", "8万円", "10万円"]),
-                 ("people", "the number of people", ["1人", "2人", "3人", "4人"])
+    usr_slots = [("loc", "location city", ["新宿", "大崎", "品川"], ["新宿", "大崎", "品川"]),
+                 ("price", "price range", ["5万円", "8万円", "10万円"], ["50000", "80000", "100000"]),
+                 ("people", "the number of people", ["1人", "2人", "3人", "4人"], ["1", "2", "3", "4"])
                  ]
+    #usr_slots = [("loc", "location city", ["新宿", "大崎", "品川"]),
+    #             ("price", "price range", ["5万円", "8万円", "10万円"]),
+    #             ("people", "the number of people", ["1人", "2人", "3人", "4人"])
+    #             ]
 
     sys_slots = []
 
