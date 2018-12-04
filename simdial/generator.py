@@ -122,7 +122,6 @@ class Generator(object):
                     break
 
                 usr_r, usr_t, usr_as = usr.step(sys_as)
-
                 # passing through noise, nlg and noise!
                 noisy_usr_as, conf = action_channel.transmit2sys(usr_as)
                 usr_utt = usr_nlg.generate_sent(noisy_usr_as)

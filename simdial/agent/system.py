@@ -314,8 +314,10 @@ class System(Agent):
                     goals.append(goal.uid)
             if len(goals) == 0:
                 raise ValueError("Empty goal. Debug!")
-            actions.append(Action(SystemAct.QUERY, [query, goals]))
-            return actions
+            # actions.append(Action(SystemAct.QUERY, [query, goals]))
+            # return actions
+            self.state.spk_state = State.EXIT
+            return Action(SystemAct.GOODBYE)
         else:
             implicit_confirms = []
             exp_confirms = []

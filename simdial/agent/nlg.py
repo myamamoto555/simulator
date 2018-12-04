@@ -37,9 +37,7 @@ class SysCommonNlg(object):
                  SystemAct.ASK_REPHRASE: ["Can you please rephrase that?", "Can you say it in another way?"],
                  SystemAct.GOODBYE: ["分かりました。条件に合う物件を検索します。"],
                  SystemAct.CLARIFY: ["I didn't catch you."],
-                 SystemAct.REQUEST+core.BaseUsrSlot.NEED: ["What can I do for you?",
-                                                           "What do you need?",
-                                                           "How can I help?"],
+                 SystemAct.REQUEST+core.BaseUsrSlot.NEED: [""],
                  SystemAct.REQUEST+core.BaseUsrSlot.HAPPY: ["What else can I do?",
                                                             "Are you happy about my answer?",
                                                             "Anything else?"],
@@ -175,7 +173,7 @@ class UserNlg(AbstractNlg):
 
                 str_actions.append(json.dumps({"RET": sys_goal_dict}))
             elif a.act == UserAct.GREET:
-                str_actions.append(self.sample(["Hi.", "Hello robot.", "What's up?"]))
+                str_actions.append(self.sample(["おはようございます。", "こんにちは。"]))
 
             elif a.act == UserAct.GOODBYE:
                 str_actions.append(self.sample(["That's all.", "Thank you.", "See you."]))
