@@ -279,7 +279,13 @@ class System(Agent):
 
         # dialog opener
         if len(self.state.history) == 0:
-            return [Action(SystemAct.GREET), Action(SystemAct.REQUEST, (BaseUsrSlot.NEED, None))]
+            actions = [Action(SystemAct.GREET)]
+            req = []
+            for slot in self.state.usr_beliefs.values():
+                req.append(Action(SystemAct.REQUEST, (slot.uid, None)))
+            actions.extend(req[0:1])
+            return actions
+            # return [Action(SystemAct.GREET) + req[0:1]]
 
         last_usr = self.state.last_actions(DialogState.USR)
         if last_usr is None:

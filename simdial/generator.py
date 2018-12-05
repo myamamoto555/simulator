@@ -117,7 +117,6 @@ class Generator(object):
                 sys_r, sys_t, sys_as, sys_s = sys.step(noisy_usr_as, conf)
                 sys_utt, sys_str_as = sys_nlg.generate_sent(sys_as, domain=domain)
                 dialog.append(self.pack_msg("SYS", sys_utt, actions=sys_str_as, domain=domain.name, state=sys_s))
-                print(sys_s)
                 if sys_t:
                     break
 
